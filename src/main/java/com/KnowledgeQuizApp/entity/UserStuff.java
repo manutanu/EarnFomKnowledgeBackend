@@ -9,12 +9,14 @@ package com.KnowledgeQuizApp.entity;
 
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -62,6 +64,9 @@ public class UserStuff {
 	
 	@OneToOne
 	private Wallet walletid;
+	
+	@OneToMany
+	private List<Role> roles;
 	
 	@PrePersist
 	public void setDateOfCreation() {
@@ -159,6 +164,14 @@ public class UserStuff {
 
 	public void setWalletid(Wallet walletid) {
 		this.walletid = walletid;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 	
 	

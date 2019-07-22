@@ -13,6 +13,7 @@ package com.KnowledgeQuizApp.security;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,6 +21,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.KnowledgeQuizApp.constants.ConstantUtils;
+import com.KnowledgeQuizApp.entity.Role;
 import com.KnowledgeQuizApp.entity.UserStuff;
 import com.KnowledgeQuizApp.repository.UserRepository;
 
@@ -50,12 +52,16 @@ public class JwtUserDetailsService implements UserDetailsService,ConstantUtils {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		//fetching userobject from database using username and activated flag
-		UserStuff userstuff = userRepository.getUserByUsernameAndVerified(username,ACTIVATED);
+		UserStuff userstuff = userRepository.findByUsernameAndActivated(username,ACTIVATED);
 
 		if (userstuff!=null) {
 			
+			ArrayList<SimpleGrantedAuthority> authorityList=new ArrayList<>();
+//			for(Role r: userstuff.getRoles()) {
+//				authorityList.add(new SimpleGrantedAuthority("ROLE_"+r.getRole()));
+//			}
 			//if userobject found in the database than return User object 
-			return new User(userstuff.getUsername(), userstuff.getPassword(), new ArrayList<>());
+			return new User(userstuff.getUsername(), userstuff.getPassword(),authorityList);
 		
 		} else {
 			

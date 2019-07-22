@@ -1,3 +1,10 @@
+/**
+* 
+* @Description Repository to interact with database and fetch User details
+* @author Mritunjay Yadav
+* @Type Repository
+*
+*/
 package com.KnowledgeQuizApp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,4 +15,8 @@ import com.KnowledgeQuizApp.entity.UserStuff;
 @Repository
 public interface UserRepository extends JpaRepository<UserStuff, Long>{
 
+	public UserStuff findByUsernameAndActivated(String username, int activated);
+	
+	
+	
 }

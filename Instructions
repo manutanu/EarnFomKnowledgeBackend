@@ -1,0 +1,9 @@
+Important points to be noted about Knowledge App
+
+1 --> use of websocket to send notification about quiz result 
+
+2 --> use of scheduler in spring boot to run utility methods at some period of time
+
+3--> Should show win and loses of every user 
+
+4--> 
