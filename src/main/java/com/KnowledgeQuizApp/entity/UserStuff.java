@@ -11,8 +11,10 @@ package com.KnowledgeQuizApp.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +30,7 @@ import javax.validation.constraints.NotNull;
 public class UserStuff {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long userid ;
 	
 	@Column(name="username")
@@ -65,7 +67,7 @@ public class UserStuff {
 	@OneToOne
 	private Wallet walletid;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private List<Role> roles;
 	
 	@PrePersist

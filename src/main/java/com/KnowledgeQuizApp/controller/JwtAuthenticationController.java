@@ -31,7 +31,7 @@ import com.KnowledgeQuizApp.security.JwtUserDetailsService;
 
 
 @RestController
-@CrossOrigin({ "http://localhost:4100", "http://localhost:4200" ,"http://192.168.1.106:4200"})
+@CrossOrigin({ "*"})
 public class JwtAuthenticationController implements ConstantUtils{
 
 	@Autowired

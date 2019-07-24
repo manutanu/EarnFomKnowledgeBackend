@@ -57,9 +57,9 @@ public class JwtUserDetailsService implements UserDetailsService,ConstantUtils {
 		if (userstuff!=null) {
 			
 			ArrayList<SimpleGrantedAuthority> authorityList=new ArrayList<>();
-//			for(Role r: userstuff.getRoles()) {
-//				authorityList.add(new SimpleGrantedAuthority("ROLE_"+r.getRole()));
-//			}
+			for(Role r: userstuff.getRoles()) {
+				authorityList.add(new SimpleGrantedAuthority("ROLE_"+r.getRole()));
+			}
 			//if userobject found in the database than return User object 
 			return new User(userstuff.getUsername(), userstuff.getPassword(),authorityList);
 		

@@ -113,9 +113,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 	   
+//		,"/register","/verification/**","/forgotpassword/**"
+		
 		//ignoring urls which should not be secured 
-		web.ignoring().antMatchers("/register");
-	    web.ignoring().antMatchers("/verification/**");
+//		web.ignoring().antMatchers("/register");
+//	    web.ignoring().antMatchers("/verification/**");
 //	    web.ignoring().antMatchers("/viewdownload/view/**");
 //	    web.ignoring().antMatchers("/viewdownload/download/**");
 //	    web.ignoring().antMatchers("/viewdownload/viewversion/**");

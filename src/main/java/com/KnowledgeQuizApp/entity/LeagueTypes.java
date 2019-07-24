@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class LeagueTypes {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long leaguetypeid;
 	
 	@Column(name="leagueName")

@@ -25,7 +25,7 @@ import javax.persistence.Table;
 public class Question {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long questionid;
 	
 	@OneToOne
