@@ -1,5 +1,5 @@
-/*
-* WebSecurityConfig
+/**
+*  @Description WebSecurityConfig
 *  In this class we mention all apis to be restricted (authenticated) and which apis should not be restricted (authenticated) 
 *
 * 1.0
@@ -7,7 +7,7 @@
 * @authored by Mritunjay Yadav
 */
 
-package com.KnowledgeQuizApp.security;
+package com.KnowledgeQuizApp.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +24,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.KnowledgeQuizApp.security.JwtAuthenticationEntryPoint;
+import com.KnowledgeQuizApp.security.JwtRequestFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -83,7 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.csrf().disable()
 				
 				// dont authenticate this particular request
-				.authorizeRequests().antMatchers("/authenticate","/register","/verification/**","/forgotpassword/**").permitAll().
+				.authorizeRequests().antMatchers("/authenticate","/register","/verification/**","**/topic/**","/forgotpassword/**","/my-chat-websocket/**","**/my-app/**").permitAll().
 				
 				// all other requests need to be authenticated
 				anyRequest().authenticated().and().
