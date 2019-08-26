@@ -61,6 +61,7 @@ public class RegistrationController implements ConstantUtils {
 		return "success";
 	}
 
+	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@GetMapping("/getmessage")
 	public String getMessage() {
