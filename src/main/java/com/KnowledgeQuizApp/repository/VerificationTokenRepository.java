@@ -15,4 +15,5 @@ import com.KnowledgeQuizApp.entity.VerificationToken;
 @Repository
 public interface VerificationTokenRepository extends JpaRepository<VerificationToken, Long> {
 
+	public VerificationToken findByToken(String verificationToken);
 }

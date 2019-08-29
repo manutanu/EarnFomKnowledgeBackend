@@ -70,6 +70,7 @@ public class JwtAuthenticationController implements ConstantUtils{
 		
 		//fetching data for authenticated user to send userid and token in response 
 		long userid=userRepository.findByUsernameAndActivated(authenticationRequest.getUsername(),ACTIVATED).getUserid();
+//		Thread.sleep(4000);
 		return ResponseEntity.ok(new JwtResponse(token,userid,authenticationRequest.getUsername()));
 	
 	}

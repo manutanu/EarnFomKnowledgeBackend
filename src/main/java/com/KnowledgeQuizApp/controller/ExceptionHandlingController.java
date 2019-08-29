@@ -20,15 +20,16 @@ import com.KnowledgeQuizApp.repository.CategoriesRepository;
 public class ExceptionHandlingController {
 	
 
-	@PreAuthorize("hasAnyRole('ADMIN')")
+//	@PreAuthorize("hasAnyRole('ADMIN')")
 	@ExceptionHandler(TestException.class)
 	@ResponseStatus(code =HttpStatus.BAD_REQUEST)
 	@ResponseBody
 	public ErrorMessage testExceptionMethod(HttpServletRequest request,Exception ex) {
 		
 		ErrorMessage error=new ErrorMessage(ex.getMessage(),HttpStatus.BAD_REQUEST.value(),request.getRequestURI());
-		return error;	
-		
+		return error;		
 	}
+	
+	
 	
 }
