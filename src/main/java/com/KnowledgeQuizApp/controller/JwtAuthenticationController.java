@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.KnowledgeQuizApp.constants.ConstantUtils;
+import com.KnowledgeQuizApp.entity.UserStuff;
 import com.KnowledgeQuizApp.model.JwtRequest;
 import com.KnowledgeQuizApp.model.JwtResponse;
 import com.KnowledgeQuizApp.repository.UserRepository;
@@ -70,8 +71,9 @@ public class JwtAuthenticationController implements ConstantUtils{
 		
 		//fetching data for authenticated user to send userid and token in response 
 		long userid=userRepository.findByUsernameAndActivated(authenticationRequest.getUsername(),ACTIVATED).getUserid();
+		UserStuff userObj = userRepository.getUserByUseridAndActivated(userid,ACTIVATED);
 //		Thread.sleep(4000);
-		return ResponseEntity.ok(new JwtResponse(token,userid,authenticationRequest.getUsername()));
+		return ResponseEntity.ok(new JwtResponse(token,userid,authenticationRequest.getUsername(),userObj.getEmail(),userObj.getCompleteName(),userObj.getWalletid(),userObj.getCreationDate(),userObj.getLose(),userObj.getWins()));
 	
 	}
 	

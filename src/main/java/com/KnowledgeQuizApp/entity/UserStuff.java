@@ -18,7 +18,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -64,10 +64,10 @@ public class UserStuff {
 	@Column(name="lose")
 	private long lose;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Wallet walletid;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+	@ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private List<Role> roles;
 	
 	@PrePersist

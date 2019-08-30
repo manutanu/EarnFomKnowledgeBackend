@@ -7,6 +7,7 @@
 */
 package com.KnowledgeQuizApp.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,5 +22,24 @@ public class Wallet {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long walletid;
 	
+	@Column(name="walletmoney")
+	private long walletmoney;
+
+	
+	public long getWalletid() {
+		return walletid;
+	}
+
+	public void setWalletid(long walletid) {
+		this.walletid = walletid;
+	}
+
+	public long getWalletmoney() {
+		return walletmoney;
+	}
+
+	public void setWalletmoney(long walletmoney) {
+		this.walletmoney = walletmoney;
+	}
 	
 }

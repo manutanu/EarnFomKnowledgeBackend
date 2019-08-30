@@ -33,6 +33,7 @@ import com.KnowledgeQuizApp.constants.ConstantUtils;
 import com.KnowledgeQuizApp.entity.Role;
 import com.KnowledgeQuizApp.entity.UserStuff;
 import com.KnowledgeQuizApp.entity.VerificationToken;
+import com.KnowledgeQuizApp.entity.Wallet;
 import com.KnowledgeQuizApp.repository.RoleRepository;
 import com.KnowledgeQuizApp.repository.UserRepository;
 import com.KnowledgeQuizApp.repository.VerificationTokenRepository;
@@ -123,7 +124,7 @@ public class RegistrationServiceImpl implements RegistrationService, ConstantUti
 	 * @Exception
 	 * 
 	 */
-	@Transactional
+//	@Transactional
 	public Map<Object, Object> registrationUtility(UserStuff user,HttpServletRequest request) {
 
 		Map<Object, Object> responseMap = new HashMap<>();
@@ -146,7 +147,12 @@ public class RegistrationServiceImpl implements RegistrationService, ConstantUti
 		ArrayList<Role> rolelist = new ArrayList<>();
 		rolelist.add(r);
 		user.setRoles(rolelist);
-
+		user.setLose(0);
+		user.setWins(0);
+		Wallet userWallet = new Wallet();
+		userWallet.setWalletmoney(100);
+		user.setWalletid(userWallet);
+		
 		try {
 			
 			//if username and useremail is not already exist in the database 
@@ -227,7 +233,7 @@ public class RegistrationServiceImpl implements RegistrationService, ConstantUti
 			//TODO Custom EXception class for Email address does'nt exist
 			userRepository.delete(user);
 			verificationTokenRepository.delete(verificationToken);
-			responseMap.put("status", "ADDRESS");
+			responseMap.put("status", "PARSE");
 		
 		} catch (Exception e) {
 			

@@ -12,6 +12,7 @@ package com.KnowledgeQuizApp.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.KnowledgeQuizApp.service.MailSendingService;
@@ -24,7 +25,7 @@ public class MailSendingServiceImpl implements MailSendingService{
 	private JavaMailSender javaMailSender;
 
 	
-//	@Async
+//	
 	/**
 	 * @Description  utility method for sending mails to the email with specified body and subject
 	 * 
@@ -34,6 +35,7 @@ public class MailSendingServiceImpl implements MailSendingService{
 	 * @Exception MailConnectException
 	 * 
 	 * */
+//	@Async
 	public Boolean sendMail(String to, String subject, String body) throws MailConnectException {
 		
 		//Making Message object to send using JavaMailSender 
