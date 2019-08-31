@@ -35,7 +35,7 @@ public class MailSendingServiceImpl implements MailSendingService{
 	 * @Exception MailConnectException
 	 * 
 	 * */
-//	@Async
+	@Async
 	public Boolean sendMail(String to, String subject, String body) throws MailConnectException {
 		
 		//Making Message object to send using JavaMailSender 

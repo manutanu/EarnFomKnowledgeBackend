@@ -1,74 +1,63 @@
-/**
-* 
-* @Description Entity for holding All Quiz data 
-* @author Mritunjay Yadav
-* @Type Entity 
-*
-*/
-package com.KnowledgeQuizApp.entity;
+package com.KnowledgeQuizApp.model;
 
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="quizes")
-public class Quizes {
+import com.KnowledgeQuizApp.entity.LeagueTypes;
+import com.KnowledgeQuizApp.entity.Question;
+import com.KnowledgeQuizApp.entity.UserStuff;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+public class QuizResponseModel {
+
 	private long quizid;
 	
+	
 	//userone configurations
-	@ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private UserStuff userone;
 	
 	
-	@Column(name="rightansuserone")
+	
 	private int rightansbyuserone;
 	
-	@Column(name="totaltimeuserone")
+	
 	private double totaltimeuserone;
 	
 	
-	@Column(name="scoreuserone")
+	
 	private double scoreFromuserone;
 	
 	//usertwo configurations
-	@ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private UserStuff usertwo;
 	
-	@Column(name="totaltimeusertwo")
+
 	private double totaltimeusertwo;
 	
-	@Column(name="rightansusertwo")
+	
 	private int rightansbyusertwo;
 	
 	
-	@Column(name="scoreusertwo")
+	
 	private double scoreFromusertwo;
 	
-	@OneToMany(mappedBy="quizid")
+	
 	private List<Question> listOfQuestions;
 	
 	
-	@OneToOne
+	
 	private UserStuff result;
 	
-	@Column(name="quizstatus")
+	
 	private String status;
 	
 	
-	@OneToOne
 	private LeagueTypes leagueType;
 	
 

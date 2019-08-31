@@ -1,26 +1,15 @@
-package com.KnowledgeQuizApp.entity;
+package com.KnowledgeQuizApp.model;
+
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity
-@Table(name="quiz_requests")
-public class QuizRequests {
+import com.KnowledgeQuizApp.entity.UserStuff;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+public class QuizRequestModel {
+
 	private long requestid;
-	
-	@OneToOne
-	private UserStuff whoshared;
 	
 	@Transient
 	private String whosharedid;
@@ -28,15 +17,19 @@ public class QuizRequests {
 	@Transient
 	private String towhomesharedid;
 	
-	@OneToOne
+	
+	private UserStuff whoshared;
+	
+	
 	private UserStuff towhomeshared;
 	
-	@Column(name="timeofrequest")
+	
 	private Date timeofrequest;
 	
-	@Column(name="timeoffullfilment")
+	
 	private Date timeoffullfilment;
 
+	
 	public long getRequestid() {
 		return requestid;
 	}

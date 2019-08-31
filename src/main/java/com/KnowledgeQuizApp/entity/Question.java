@@ -28,6 +28,9 @@ public class Question {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long questionid;
 	
+	@Column(name="question_desc")
+	private String questionDesc;
+	
 	@OneToOne
 	private Answer options;
 	
@@ -121,6 +124,14 @@ public class Question {
 
 	public void setCategory(Categories category) {
 		this.category = category;
+	}
+
+	public String getQuestionDesc() {
+		return questionDesc;
+	}
+
+	public void setQuestionDesc(String questionDesc) {
+		this.questionDesc = questionDesc;
 	}
 	
 	
