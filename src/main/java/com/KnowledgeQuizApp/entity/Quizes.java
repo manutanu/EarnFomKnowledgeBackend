@@ -57,12 +57,8 @@ public class Quizes {
 	@Column(name="scoreusertwo")
 	private double scoreFromusertwo;
 	
-	@OneToMany(mappedBy="quizid")
+	@OneToMany(mappedBy="quizid" ,cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.MERGE,CascadeType.REFRESH})
 	private List<Question> listOfQuestions;
-	
-	
-	@OneToOne
-	private UserStuff result;
 	
 	@Column(name="quizstatus")
 	private String status;
@@ -193,14 +189,15 @@ public class Quizes {
 	}
 
 
-	public UserStuff getResult() {
-		return result;
+	@Override
+	public String toString() {
+		return "Quizes [quizid=" + quizid + ", userone=" + userone + ", rightansbyuserone=" + rightansbyuserone
+				+ ", totaltimeuserone=" + totaltimeuserone + ", scoreFromuserone=" + scoreFromuserone + ", usertwo="
+				+ usertwo + ", totaltimeusertwo=" + totaltimeusertwo + ", rightansbyusertwo=" + rightansbyusertwo
+				+ ", scoreFromusertwo=" + scoreFromusertwo + ", listOfQuestions=" + listOfQuestions + ", status="
+				+ status + ", leagueType=" + leagueType + "]";
 	}
-
-
-	public void setResult(UserStuff result) {
-		this.result = result;
-	}
+	
 	
 	
 }

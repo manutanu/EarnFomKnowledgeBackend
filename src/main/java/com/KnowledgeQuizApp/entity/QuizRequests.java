@@ -22,12 +22,6 @@ public class QuizRequests {
 	@OneToOne
 	private UserStuff whoshared;
 	
-	@Transient
-	private String whosharedid;
-	
-	@Transient
-	private String towhomesharedid;
-	
 	@OneToOne
 	private UserStuff towhomeshared;
 	
@@ -36,6 +30,20 @@ public class QuizRequests {
 	
 	@Column(name="timeoffullfilment")
 	private Date timeoffullfilment;
+	
+
+	@Transient
+	private String whosharedid;
+	
+	@Transient
+	private String towhomesharedid;
+	
+	@Transient
+	private String category;
+	
+	@Transient
+	private long leagueid;
+	
 
 	public long getRequestid() {
 		return requestid;
@@ -91,6 +99,22 @@ public class QuizRequests {
 
 	public void setTowhomesharedid(String towhomesharedid) {
 		this.towhomesharedid = towhomesharedid;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public long getLeagueid() {
+		return leagueid;
+	}
+
+	public void setLeagueid(long leagueid) {
+		this.leagueid = leagueid;
 	}
 	
 	

@@ -15,4 +15,6 @@ import com.KnowledgeQuizApp.entity.Categories;
 @Repository
 public interface CategoriesRepository extends JpaRepository<Categories, Long>{
 
+	
+	public Categories getCategoriesByCategoryName(String categoryName);
 }

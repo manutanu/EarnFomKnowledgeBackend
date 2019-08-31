@@ -8,13 +8,10 @@ import javax.persistence.Transient;
 import com.KnowledgeQuizApp.entity.UserStuff;
 
 public class QuizRequestModel {
-
-	private long requestid;
 	
-	@Transient
 	private String whosharedid;
 	
-	@Transient
+	
 	private String towhomesharedid;
 	
 	
@@ -28,14 +25,19 @@ public class QuizRequestModel {
 	
 	
 	private Date timeoffullfilment;
+	
+	private String category;
+	
+	private long leagueid;
+	
 
 	
-	public long getRequestid() {
-		return requestid;
+	public String getCategory() {
+		return category;
 	}
 
-	public void setRequestid(long requestid) {
-		this.requestid = requestid;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public UserStuff getWhoshared() {
@@ -84,6 +86,14 @@ public class QuizRequestModel {
 
 	public void setTowhomesharedid(String towhomesharedid) {
 		this.towhomesharedid = towhomesharedid;
+	}
+
+	public long getLeagueid() {
+		return leagueid;
+	}
+
+	public void setLeagueid(long leagueid) {
+		this.leagueid = leagueid;
 	}
 	
 	
